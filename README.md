@@ -302,11 +302,3 @@ If you encounter errors related to the embedding model:
 ### Performance Considerations
 
 For large resumes or job descriptions, the analysis may take a moment to complete due to the embedding process.
-
-## License
-
-[MIT License](LICENSE)
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. 
