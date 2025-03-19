@@ -10,97 +10,13 @@ A sophisticated ATS (Applicant Tracking System) checker that uses AI-powered ana
 - **Career Chronology Analysis**: Analyzes employment history, gaps, and career progression
 - **Detailed Feedback**: Provides actionable recommendations to improve match score
 
-## Quick Start Guide
-
-This section provides the minimum steps to get up and running with the ResumeAI ATS Checker.
-
-### Linux (Automated Setup)
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/resumeai-ats-checker.git
-   cd resumeai-ats-checker
-   ```
-
-2. Make the scripts executable and run the automated setup:
-   ```bash
-   chmod +x setup.sh start.sh
-   ./setup.sh
-   ```
-
-3. Start the ATS checker with a single command:
-   ```bash
-   ./start.sh
-   ```
-   
-   This will:
-   - Check if Ollama is running and start it if needed
-   - Verify the embedding model is installed
-   - Run the ATS checker
-   - Clean up when done
-
-### macOS
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/resumeai-ats-checker.git
-   cd resumeai-ats-checker
-   ```
-
-2. Install Ollama from [https://ollama.com/download](https://ollama.com/download)
-
-3. Install dependencies and run:
-   ```bash
-   npm install
-   ollama serve &  # Start Ollama in background
-   ollama pull nomic-embed-text  # Download the model
-   node ats-checker.js
-   ```
-
-### Windows (Semi-Automated)
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/resumeai-ats-checker.git
-   cd resumeai-ats-checker
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Install Ollama from [https://ollama.com/download](https://ollama.com/download)
-
-4. Start Ollama server (in a separate command prompt):
-   ```bash
-   ollama serve
-   ```
-
-5. Run the automated batch file:
-   ```bash
-   start.bat
-   ```
-   
-   This will:
-   - Check if Ollama is running
-   - Verify the embedding model is installed
-   - Run the ATS checker
-
-### Using Your Own Resume and Job Description
-
-1. Open `ats-checker.js` in a text editor
-2. Replace the `jobDescription` variable with your target job description
-3. Replace the `candidateResume` variable with your resume text
-4. Run the checker again using the appropriate script for your OS
-
 ## Prerequisites
 
 - Node.js (v14 or later)
 - npm (Node Package Manager)
 - Ollama (for embedding model)
 
-## Installation
+## Step-by-Step Installation
 
 ### 1. Clone the Repository
 
@@ -109,52 +25,7 @@ git clone https://github.com/yourusername/resumeai-ats-checker.git
 cd resumeai-ats-checker
 ```
 
-### 2. Automated Setup (Linux/Windows)
-
-#### For Linux:
-
-Use the provided shell scripts to automatically set up and run the application:
-
-```bash
-# Make scripts executable
-chmod +x setup.sh start.sh
-
-# Run the setup script (one-time setup)
-./setup.sh
-
-# Start the application (each time you want to run it)
-./start.sh
-```
-
-The `setup.sh` script will:
-- Check for and verify Node.js and npm installation
-- Install Node.js dependencies
-- Install Ollama if not already installed
-- Pull the required embedding model
-
-The `start.sh` script will:
-- Verify Ollama server is running (and start it if not)
-- Verify the embedding model is installed
-- Run the ATS checker
-- Shut down Ollama when done (if it was started by the script)
-
-#### For Windows:
-
-```bash
-# Install dependencies manually
-npm install
-
-# Start the application using the batch file
-start.bat
-```
-
-The `start.bat` script will check for Ollama, verify the model is installed, and run the ATS checker.
-
-### 3. Manual Setup
-
-If you prefer to set up manually, follow these steps:
-
-#### Install Node Dependencies
+### 2. Install Node.js Dependencies
 
 ```bash
 npm install
@@ -165,25 +36,25 @@ This will install required packages:
 - mathjs
 - natural
 
-#### Install and Set Up Ollama
+### 3. Install Ollama
 
-Ollama is used for generating embeddings to perform semantic analysis of resume and job descriptions.
+Ollama is used for generating embeddings to perform semantic analysis.
 
-For Linux:
+#### For Linux:
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-For macOS:
+#### For macOS:
 
 Download and install from [https://ollama.com/download](https://ollama.com/download)
 
-For Windows:
+#### For Windows:
 
 Download and install from [https://ollama.com/download](https://ollama.com/download)
 
-#### Pull the Embedding Model
+### 4. Pull the Required Embedding Model
 
 After installing Ollama, pull the `nomic-embed-text` model:
 
@@ -191,55 +62,41 @@ After installing Ollama, pull the `nomic-embed-text` model:
 ollama pull nomic-embed-text
 ```
 
-#### Start Ollama Server
+## Running the ATS Checker
 
-Make sure the Ollama server is running:
+### 1. Start the Ollama Server
+
+Open a terminal window and start the Ollama server:
 
 ```bash
 ollama serve
 ```
 
-Keep this terminal window open, and open a new one for the next steps.
+Keep this terminal window open while using the ATS checker.
 
-## Usage
+### 2. Run the ATS Checker
 
-### Using Automation Scripts
-
-For the simplest experience:
-
-#### Linux:
-```bash
-# Just run the start script
-./start.sh
-```
-
-#### Windows:
-```bash
-# Make sure Ollama is running in another window
-# Then run the batch file
-start.bat
-```
-
-### Basic Usage (Manual)
-
-The ATS checker is configured with a sample job description and resume in the `ats-checker.js` file. To run the analysis with these samples:
+Open a new terminal window, navigate to the project directory, and run:
 
 ```bash
 node ats-checker.js
 ```
 
-This will output a detailed analysis of how well the sample resume matches the job description.
+This will analyze the sample resume and job description included in the code.
 
-### Customizing for Your Resume and Job Description
+## Using Your Own Resume and Job Description
+
+To analyze your own resume against a specific job description:
 
 1. Open `ats-checker.js` in a text editor
-2. Replace the contents of the `jobDescription` variable with the job description you're targeting
-3. Replace the contents of the `candidateResume` variable with your resume text
-4. Save the file and run the checker:
-
-```bash
-node ats-checker.js
-```
+2. Find the `jobDescription` variable and replace its content with your target job description
+3. Find the `candidateResume` variable and replace its content with your resume text
+4. Save the file
+5. Make sure the Ollama server is running
+6. Run the checker:
+   ```bash
+   node ats-checker.js
+   ```
 
 ## Understanding the Results
 
@@ -282,22 +139,21 @@ The system provides insights on:
 
 ## Troubleshooting
 
-### Script-related Issues
-
-If you encounter issues with the automation scripts:
-
-1. Ensure scripts are executable: `chmod +x setup.sh start.sh`
-2. If `start.sh` fails to start Ollama, try running it manually in a separate window: `ollama serve`
-3. Check script logs for specific error messages
-4. For Windows users, make sure to run `start.bat` from Command Prompt or PowerShell with administrator privileges if needed
-
-### Embedding Model Issues
+### Ollama-Related Issues
 
 If you encounter errors related to the embedding model:
 
 1. Ensure Ollama is running in a separate terminal window (`ollama serve`)
 2. Check if the model was downloaded correctly (`ollama list`)
 3. If needed, re-pull the model: `ollama pull nomic-embed-text`
+
+### Node.js Issues
+
+If you encounter issues with Node.js:
+
+1. Verify your Node.js version with `node -v` (should be v14 or later)
+2. Try reinstalling the dependencies with `npm install`
+3. Check for errors in the console output
 
 ### Performance Considerations
 
